@@ -1,7 +1,10 @@
-import { useEffect, useState, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import { api } from '../../services/api';
 
-import { Page, InputContent } from './styles';
+import { Page, InputContent, Content } from './styles';
+import { SearchMovie } from '../../components/searchMoviesList';
+
+import { AiOutlineSearch } from 'react-icons/ai';
 
 interface movies {
   id: number;
@@ -10,7 +13,7 @@ interface movies {
 
 export function Home(){
 
-    const [movieValue, setMovieValue] = useState('');
+        const [movieValue, setMovieValue] = useState('');
         const [moviesResults, setMoviesResults] = useState<movies[]>([]);
        
         const API_KEY = 'f2323eb016954b2a5370e5317c9f2398';
@@ -23,14 +26,21 @@ export function Home(){
          }
        
          const response = await api.get(`/search/movie?query=${movieValue}&api_key=${API_KEY}`);
-       
-         console.log(response.data);
-         setMoviesResults(response.data.results);
+
+         const sevenFirstPositon = [];
+
+         for(let i = 0; i <= 7; i++){
+           sevenFirstPositon.push(response.data.results[i])
+         }
+
+         console.log(sevenFirstPositon);
+         setMoviesResults(sevenFirstPositon);
+
         }
 
          return (
            <Page>
-
+           <Content>
             <div>
               <h3>Olá!</h3>
               <div>
@@ -41,21 +51,17 @@ export function Home(){
 
              <form onSubmit={handleSearchMovie}>
                <InputContent>
-                  <input type="text" name="movie" id="movie" value={movieValue} onChange={(e)=>setMovieValue(e.target.value)} />
-                  <button type='submit'>Search</button>
+                  <input placeholder='Pesquise pelo nome do filme...' type="text" name="movie" id="movie" value={movieValue} onChange={(e)=>setMovieValue(e.target.value)} />
+                  <button type='submit'><AiOutlineSearch color='#b967c7'/></button>
                </InputContent>
-               {
-                 moviesResults.length ===  0 ?(
-                   <p>Sem Resultados</p>
-                 ) : (
-                   moviesResults.map(movie=>{
-                     return(
-                       <div key={movie.id}>{movie.title}</div>
-                     )
-                   })
-                 )
-               }
+               
+              {
+               moviesResults.map(movie=>(
+                <SearchMovie key={movie.id} id={movie.id} title={movie.title} />
+               ))
+              }
              </form>
+            </Content>
            </Page>
          );
        }

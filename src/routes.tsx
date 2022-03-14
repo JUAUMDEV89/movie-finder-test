@@ -1,4 +1,4 @@
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Routes as RoutesProvider } from 'react-router-dom';
 
 import { Home } from './pages/home';
 import { MovieInfo } from './pages/movieInfo';
@@ -7,9 +7,11 @@ function Routes() {
   return(
     
      <BrowserRouter>
-           <Route  component={ Home } path="/"  exact  />
-           <Route component={ MovieInfo }  path="/movie/:id" />
-       </BrowserRouter>
+           <RoutesProvider>
+             <Route  element={ <Home /> } path="/" />
+             <Route element={ <MovieInfo /> } path="/movie/:id" />
+           </RoutesProvider>
+     </BrowserRouter>
     
   )
 }
