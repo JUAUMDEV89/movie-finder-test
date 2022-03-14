@@ -16,7 +16,7 @@ export function Home(){
         const [movieValue, setMovieValue] = useState('');
         const [moviesResults, setMoviesResults] = useState<movies[]>([]);
        
-        const API_KEY = 'f2323eb016954b2a5370e5317c9f2398';
+        const API_KEY = process.env.REACT_APP_API_KEY_THE_MOVIE_DB;
        
         async function handleSearchMovie(event: FormEvent){
          event.preventDefault();
