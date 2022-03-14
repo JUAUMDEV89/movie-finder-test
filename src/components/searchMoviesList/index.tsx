@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 interface moviesListProps{
@@ -8,7 +9,7 @@ interface moviesListProps{
 export function SearchMovie({ id, title }: moviesListProps){
     return(
        <Container>
-            <a href={`/movie/${id}` }>{title}</a>  
+            <Link to={`/movie/${id}` }>{title}</Link>  
        </Container>    
     )
 }

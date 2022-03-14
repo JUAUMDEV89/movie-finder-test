@@ -30,6 +30,10 @@ export const Content = styled.main`
   form{
     margin-top: 5rem;
 
+    strong{
+      font-size: 1rem;
+    }
+
   }
 `;
 
@@ -37,14 +41,16 @@ export const InputContent = styled.div`
   display: flex;
   flex-direction: row;
   border: 1px solid #b3aead;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
   width: 100%;
   height: 2rem;
+  margin-top: 1rem;
 
   input{
-    flex:14;
+    flex: 14;
     height: 100%;
     border: none;
+    padding-left: 0.8rem;
   }
 
   button{

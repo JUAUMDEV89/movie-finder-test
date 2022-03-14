@@ -20,6 +20,13 @@ export const Page = styled.main`
       cursor: pointer;
       font-weight: bold;
       margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      span{
+        margin-left: 0.5rem;
+      }
     }
   }
 
@@ -32,9 +39,17 @@ export const Content = styled.main`
   border: none;
   border-radius: 2rem;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem;
   padding-left: 3rem;
   align-items: flex-start;
+
+  strong{
+    margin-bottom: 0.5rem;
+  }
+
+  h3{
+    margin-bottom: 2rem;
+  }
 
   div{
     display: flex;
@@ -65,6 +80,8 @@ export const Content = styled.main`
         p{
           display: flex;
           font-weight: bold;
+          justify-content: flex-start;
+          align-items: center;
           font-size: 1.5rem;
           span{
             font-size: 1rem;

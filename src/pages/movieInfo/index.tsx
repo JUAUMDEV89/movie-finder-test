@@ -19,7 +19,7 @@ interface MovieIfosProps{
 
 export function MovieInfo(){
 
-    const API_KEY = process.env.REACT_APP_API_KEY_THE_MOVIE_DB;
+    const API_KEY = process.env.REACT_APP_API_KEY_THEMOVIEDB;
 
     const [movie, setMovie] = useState<MovieIfosProps>();
 
@@ -42,10 +42,10 @@ export function MovieInfo(){
      return(
             <Page>
                 <section>
-                    <a href='/'> 
+                    <Link to='/'> 
                         <AiOutlineArrowLeft />
                         <span>Voltar</span>
-                    </a>
+                    </Link>
                     <Content>
                         <h3>{movie?.title}</h3>
                         <div>
@@ -65,7 +65,7 @@ export function MovieInfo(){
 
                               <div className="vote">
                                   <strong>Avaliação:</strong>
-                                  <p><GiRoundStar fontSize={"1.4rem"} color="#ebbd34" />{movie?.vote_average}<span>/10</span></p>
+                                  <p><GiRoundStar style={{marginRight: '0.4rem'}} fontSize={"1.4rem"} color="#ebbd34" />{movie?.vote_average}<span>/10</span></p>
                               </div>
                             </div>
                         </div>
