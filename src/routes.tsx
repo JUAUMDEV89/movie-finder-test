@@ -8,7 +8,7 @@ function Routes() {
     
      <BrowserRouter>
            <RoutesProvider>
-             <Route  element={ <Home /> } path="/" />
+             <Route element={ <Home /> } path="/" />
              <Route element={ <MovieInfo /> } path="/movie/:id" />
            </RoutesProvider>
      </BrowserRouter>
