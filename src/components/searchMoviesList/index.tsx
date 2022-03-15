@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 interface moviesListProps{
-    id: number;
+    id: number | undefined;
     title: string;
 }
 

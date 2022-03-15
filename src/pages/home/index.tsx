@@ -7,7 +7,7 @@ import { SearchMovie } from '../../components/searchMoviesList';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 interface movies {
-    id: number;
+    id: number | undefined;
     title: string;
     original_title: string;
     poster_path: string;
@@ -22,51 +22,43 @@ export function Home(){
 
         const API_KEY = process.env.REACT_APP_API_KEY_THEMOVIEDB;
 
-        useEffect(()=>{
-          async function loadMovies(){
-          
-           try{
 
-            const movieValueLowerCase = movieValue.toLowerCase()
-
-            const response = await api.get(`/search/movie?query=${movieValueLowerCase}&api_key=${API_KEY}`);
-   
-            const sevenFirstPositon = [];
-
-            for(let i = 0; i <= 7; i++){
-              sevenFirstPositon.push(response.data.results[i])
-            }
-   
-            console.log(sevenFirstPositon);
-            setMoviesResults(sevenFirstPositon);
-           }catch(err){
-             console.log(err)
-           }
-          }
-
-           loadMovies()
-        }, [movieValue]);
-
-        async function handleSearchMovie(event: FormEvent){
+        async function handleSearchMovie(event?: FormEvent){
           event.preventDefault();
         
           if(!movieValue.trim()){
             return;
           }
-        
-          const response = await api.get(`/search/movie?query=${movieValue}&api_key=${API_KEY}`);
- 
-          const sevenFirstPositon = [];
- 
-          for(let i = 0; i <= 7; i++){
-            sevenFirstPositon.push(response.data.results[i])
-          }
-
-          setMoviesResults(sevenFirstPositon);
           
-          console.log(sevenFirstPositon);
+          const movieValueLowerCase = movieValue.toLowerCase()
+
+          const response = await api.get(`/search/movie?query=${movieValueLowerCase}&api_key=${API_KEY}`);
+ 
+          console.log(response.statusText);
+ 
+          setMoviesResults(response.data.results);
+          
          }
 
+        useEffect(()=>{
+           async function loadMovies(){
+            if(!movieValue.trim()){
+              return;
+            }
+            
+            const movieValueLowerCase = movieValue.toLowerCase()
+  
+            const response = await api.get(`/search/movie?query=${movieValueLowerCase}&api_key=${API_KEY}`);
+   
+            console.log(response.statusText);
+   
+            setMoviesResults(response.data.results);
+           }
+
+           loadMovies();
+        }, [movieValue]);
+
+    
          return (
            <Page>
            <Content>
@@ -87,7 +79,7 @@ export function Home(){
                
               {
                 moviesResults.map(movie=>(
-                  <SearchMovie key={movie.id} id={movie.id} title={movie.title} />
+                    <SearchMovie key={movie.id} id={movie.id} title={movie.title} />             
                 ))
               }
              </form>
