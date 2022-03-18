@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Page = styled.main`
   width: 100%;
   height: 100vh;
-  background: #d8d4d9;
+  background: transparent linear-gradient(180deg, #FEFCFF 0%, #DCD6E0 100%) 0% 0% no-repeat padding-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ export const Page = styled.main`
 
     a{
       text-decoration: none;
-      color:#b967c7;
+      color:#9E76B9;
       cursor: pointer;
       font-weight: bold;
       margin-bottom: 1rem;
@@ -45,10 +45,12 @@ export const Content = styled.main`
 
   strong{
     margin-bottom: 0.5rem;
+    color:  var(--text);
   }
 
   h3{
     margin-bottom: 2rem;
+    color:  var(--text);
   }
 
   div{
@@ -71,6 +73,7 @@ export const Content = styled.main`
         p{
           font-size: 0.8rem;
           width: 500px;
+          color:  var(--text);
         }
       }
 

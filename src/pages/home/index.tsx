@@ -1,13 +1,15 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { api } from '../../services/api';
 
+import { Header } from '../../components/header';
+
 import { Page, InputContent, Content } from './styles';
 import { SearchMovie } from '../../components/searchMoviesList';
 
 import { AiOutlineSearch } from 'react-icons/ai';
 
 interface movies {
-    id: number | undefined;
+    id: number;
     title: string;
     original_title: string;
     poster_path: string;
@@ -23,7 +25,7 @@ export function Home(){
         const API_KEY = process.env.REACT_APP_API_KEY_THEMOVIEDB;
 
 
-        async function handleSearchMovie(event?: FormEvent){
+        async function handleSearchMovie(event: FormEvent){
           event.preventDefault();
         
           if(!movieValue.trim()){
@@ -60,6 +62,8 @@ export function Home(){
 
     
          return (
+           <>
+           <Header />
            <Page>
            <Content>
             <div>
@@ -74,7 +78,7 @@ export function Home(){
                <strong>Busque um filme para começar.</strong>
                <InputContent>
                   <input autoComplete='off' placeholder='Pesquise pelo nome do filme...' type="text" name="movie" id="movie" value={movieValue} onChange={(e)=>setMovieValue(e.target.value)} />
-                  <button type='submit'><AiOutlineSearch color='#b967c7'/></button>
+                  <button type='submit'><img src="./assets/search.svg" alt="search" /></button>
                </InputContent>
                
               {
@@ -85,6 +89,7 @@ export function Home(){
              </form>
             </Content>
            </Page>
+           </>
          );
        }
     

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { AiOutlineArrowLeft }  from 'react-icons/ai';
 import { useParams, Link } from 'react-router-dom';
 
+import { Header } from '../../components/header';
+
 import { api } from '../../services/api';
 
 import {  Page, Content  } from  './styles';
@@ -40,6 +42,8 @@ export function MovieInfo(){
      }, []);
 
      return(
+            <>
+            <Header />
             <Page>
                 <section>
                     <Link to='/'> 
@@ -65,12 +69,13 @@ export function MovieInfo(){
 
                               <div className="vote">
                                   <strong>Avaliação:</strong>
-                                  <p><GiRoundStar style={{marginRight: '0.4rem'}} fontSize={"1.4rem"} color="#ebbd34" />{movie?.vote_average}<span>/10</span></p>
+                                  <p><GiRoundStar style={{marginRight: '0.4rem'}} fontSize={"1.4rem"} color="#FFB100" />{movie?.vote_average}<span>/10</span></p>
                               </div>
                             </div>
                         </div>
                     </Content>
                 </section>
             </Page>
+            </>
      )
 }
