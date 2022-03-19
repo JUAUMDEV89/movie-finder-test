@@ -6,6 +6,7 @@ import { Header } from '../../components/header';
 
 import { api } from '../../services/api';
 
+import { Footer } from '../../components/footer';
 import {  Page, Content  } from  './styles';
 import { GiRoundStar } from "react-icons/gi";
 
@@ -75,6 +76,7 @@ export function MovieInfo(){
                         </div>
                     </Content>
                 </section>
+             <Footer />
             </Page>
             </>
      )

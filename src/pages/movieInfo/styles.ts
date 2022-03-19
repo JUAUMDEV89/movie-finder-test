@@ -5,14 +5,15 @@ export const Page = styled.main`
   height: 100vh;
   background: transparent linear-gradient(180deg, #FEFCFF 0%, #DCD6E0 100%) 0% 0% no-repeat padding-box;
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   section{
     display: flex;
     flex-direction: column;
     height: 60%;
     width: 80%;
+    margin: auto;
 
     a{
       text-decoration: none;

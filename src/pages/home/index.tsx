@@ -6,7 +6,7 @@ import { Header } from '../../components/header';
 import { Page, InputContent, Content } from './styles';
 import { SearchMovie } from '../../components/searchMoviesList';
 
-import { AiOutlineSearch } from 'react-icons/ai';
+import { Footer } from '../../components/footer'
 
 interface movies {
     id: number;
@@ -88,6 +88,8 @@ export function Home(){
               }
              </form>
             </Content>
+
+            <Footer/>
            </Page>
            </>
          );
